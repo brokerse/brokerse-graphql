@@ -2,14 +2,18 @@
   "name": "graphql",
   "version": "0.1.0",
   "devDependencies": {
-    "bs-platform": "^7.0.1"
+    "bs-platform": "^7.0.1",
+    "nodemon": "^2.0.4"
   },
   "dependencies": {
     "@glennsl/bs-json": "^5.0.2",
     "bs-express": "^1.0.2",
     "bs-fetch": "^0.6.1",
     "bs-json": "^1.0.1",
+    "fastify": "2.15.1",
+    "fastify-gql": "4.3.0",
     "isomorphic-fetch": "^2.2.1",
+    "mongodb": "3.5.9",
     "reason-dataloader": "^0.1.1",
     "reason-graphql": "^0.6.1",
     "reason-graphql-bs-express": "^0.6.0"

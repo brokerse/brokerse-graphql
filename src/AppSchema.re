@@ -5,10 +5,18 @@ let order =
     obj("order", ~fields=_ =>
       [
         field(
+          "_id",
+          nonnull(string),
+          ~args=Arg.[],
+          ~resolve=((), order: Types.order) =>
+          order._id
+        ),
+        field(
           "name",
           nonnull(string),
           ~args=Arg.[],
-          ~resolve=((), order: Types.order) => order._id
+          ~resolve=((), order: Types.order) =>
+          order.name
         ),
       ]
     )
@@ -21,7 +29,11 @@ let rootQuery =
         "orders",
         nonnull(list(nonnull(order))),
         ~args=Arg.[],
-        ~resolve=((), _) => Js.Promise.resolve(Ok([Types.{ _id: "1"}])),
+        ~resolve=((), _) =>
+        Mongo.findAll()
+        |> Js.Promise.then_((orders: array(Types.order)) =>
+             Js.Promise.resolve(Ok(orders |> Array.to_list))
+           )
       ),
       // async_field(
       //   "starship",
