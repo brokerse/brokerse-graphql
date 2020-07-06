@@ -1,4 +1,4 @@
-open GraphqlFuture;
+open GraphqlJsPromise;
 
 let order =
   Schema.(
@@ -21,7 +21,7 @@ let rootQuery =
         "orders",
         nonnull(list(nonnull(order))),
         ~args=Arg.[],
-        ~resolve=[],
+        ~resolve=((), _) => Js.Promise.resolve(Ok([Types.{ _id: "1"}])),
       ),
       // async_field(
       //   "starship",

@@ -2,19 +2,23 @@
   "name": "graphql",
   "version": "0.1.0",
   "devDependencies": {
-    "bs-platform": "^5.0.2"
+    "bs-platform": "^7.0.1"
   },
   "dependencies": {
-    "@glennsl/bs-json": "^3.0.0",
-    "bs-express": "^0.12.0",
-    "bs-fetch": "^0.3.1",
+    "@glennsl/bs-json": "^5.0.2",
+    "bs-express": "^1.0.2",
+    "bs-fetch": "^0.6.1",
     "bs-json": "^1.0.1",
     "isomorphic-fetch": "^2.2.1",
     "reason-dataloader": "^0.1.1",
-    "reason-graphql": "^0.3.2",
-    "reason-graphql-bs-express": "^0.2.0"
+    "reason-graphql": "^0.6.1",
+    "reason-graphql-bs-express": "^0.6.0"
+  },
+  "resolutions": {
+    "bs-let": "0.1.16"
   },
   "scripts": {
+    "serve": "node ./src/server.bs.js",
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world"
