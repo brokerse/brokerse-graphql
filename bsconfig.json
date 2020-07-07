@@ -17,7 +17,8 @@
     "reason-future",
     "reason-graphql",
     "reason-graphql-bs-express",
-    "reason-dataloader"
+    "reason-dataloader",
+    "reason-promise"
   ],
   "warnings": {
     "number": "-44-45",

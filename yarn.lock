@@ -3735,7 +3735,7 @@ reason-graphql@^0.6.1:
     reason-future "^2.4.0"
     reason-promise "^1.0.1"
 
-reason-promise@^1.0.1:
+reason-promise@^1.0.1, reason-promise@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/reason-promise/-/reason-promise-1.1.1.tgz#966133fed21e748a50ffb8839a1da04912bcf380"
   integrity sha512-xMXDiyzTjn7t9pq9aQrkgu8CLB5DILU70oWQ+LI20YecshypUwsw37TKOvCxgoFR3vo30ucF0/iWe2BZ181/jw==

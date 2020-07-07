@@ -16,9 +16,11 @@ module Cursor = {
 
 module Collection = {
   type t;
+  // type d = Js.t({..} as 'a);
   type d = Js.Dict.t(unit);
 
   [@bs.send] external find: (t, d) => Cursor.t;
+  [@bs.send] external findOne: (t, d) => Cursor.t;
 };
 
 module Db = {
@@ -58,19 +60,3 @@ module MongoDb = {
     });
   };
 };
-
-let mongoClient = MongoDb.client;
-let mongoUrl = "mongodb://localhost:27017";
-
-let findAll = () =>
-  MongoDb.connectAsync(mongoClient, mongoUrl)
-  |> Js.Promise.then_(c => {
-       let db = Client.db(c, "brokerse");
-       let collection = Db.collection(db, "orders");
-       let d = Js.Dict.empty();
-       let cursor = Collection.find(collection, d);
-
-       Js.Promise.make((~resolve, ~reject as _) => {
-         Cursor.toArray(cursor, (_, docs) => resolve(. docs))
-       });
-     });
