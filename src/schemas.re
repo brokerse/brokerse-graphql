@@ -17,14 +17,15 @@ let rootQuery =
         "orders",
         nonnull(list(nonnull(Order.schema))),
         ~args=Arg.[],
-        ~resolve=((), _) => []
-
+        ~resolve=((), _) =>
+        Order.find()
+        ->Promise.getOk(orders |> Array.to_list)
       ),
     ])
   );
 
-let schema = Schema.create(rootQuery) /*    */;
+let schema = Schema.create(rootQuery) /*            */;
 
 // Order.find()
-// |> Js.Promise.then_((orders: array(Order.t)) =>
-//      Js.Promise.resolve(Ok(orders |> Array.to_list))
+//         |> Js.Promise.then_((orders: array(Order.t)) =>
+//              Js.Promise.resolve(Ok(orders |> Array.to_list))

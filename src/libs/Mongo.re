@@ -50,13 +50,14 @@ module MongoDb = {
   [@bs.module "mongodb"] external client: t = "MongoClient";
 
   let connectAsync = (t, url) => {
-    Js.Promise.make((~resolve, ~reject) => {
-      connect(t, url, (e, c) => {
-        switch (e) {
-        | exception _ => reject(. MongoError(e.message))
-        | _ => resolve(. c)
-        }
-      })
+    let (promise, resolve) = Promise.pending();
+    connect(t, url, (e, c) => {
+      switch (e) {
+      | exception _ => resolve(Error(e.message))
+      | _ => resolve(Ok(c))
+      }
     });
+
+    promise;
   };
 };
